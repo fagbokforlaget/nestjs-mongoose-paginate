@@ -1,5 +1,4 @@
-import { CollectionProperties } from './input.dto';
-import { CollectionPropertyOptions } from './property';
+import { CollectionProperties, CollectionPropertyOptions } from './property';
 
 export const Expose = (options?: CollectionPropertyOptions) => {
   return (target: CollectionProperties, propertyName: string) => {
