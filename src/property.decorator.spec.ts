@@ -1,4 +1,5 @@
-import { CollectionProperties, Expose } from './property.decorator';
+import { CollectionProperties } from './property';
+import { Expose } from './property.decorator';
 
 class User extends CollectionProperties {
   @Expose({ sortable: true, filterable: true })

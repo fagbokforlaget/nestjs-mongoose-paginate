@@ -1,13 +1,5 @@
-export class CollectionProperties {
-  __props: Record<string, CollectionPropertyOptions> = {};
-}
-
-export interface CollectionPropertyOptions {
-  readonly name?: string;
-  readonly sortable?: boolean;
-  readonly filterable?: boolean;
-  readonly default?: boolean;
-}
+import { CollectionProperties } from './input.dto';
+import { CollectionPropertyOptions } from './property';
 
 export const Expose = (options?: CollectionPropertyOptions) => {
   return (target: CollectionProperties, propertyName: string) => {
