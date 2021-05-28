@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@nestjs/swagger": "^4.8.0",
+    "ajv": "^8.4.0",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1"
   },
