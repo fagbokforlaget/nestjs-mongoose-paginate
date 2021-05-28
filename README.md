@@ -12,7 +12,10 @@ You should set this parameters explicitly.
 In case you want to expose some of the properties with a different name, you need to specify a `name` option in this decorator.
 
 ```
-import { CollectionProperties, Expose } from '@fagbokforlaget/nestjs-mongoose-paginate';
+import {
+  CollectionProperties,
+  Expose
+} from '@fagbokforlaget/nestjs-mongoose-paginate';
 
 export class MyCollectionProperties extends CollectionProperties {
   @Expose({ name: 'createdAt', sortable: true })
@@ -28,7 +31,11 @@ export class MyCollectionProperties extends CollectionProperties {
 ### Validation Pipe
 
 ```
-import { CollectionDto, ValidationPipe, CollectionResponse } from '@fagbokforlaget/nestjs-mongoose-paginate';
+import {
+  CollectionDto,
+  ValidationPipe,
+  CollectionResponse
+} from '@fagbokforlaget/nestjs-mongoose-paginate';
 
 @Controller()
 export class AppController {
@@ -47,7 +54,11 @@ export class AppController {
 ```
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { CollectionDto, DocumentCollector, CollectionResponse } from '@fagbokforlaget/nestjs-mongoose-paginate';
+import {
+  CollectionDto,
+  DocumentCollector,
+  CollectionResponse
+} from '@fagbokforlaget/nestjs-mongoose-paginate';
 
 @Injectable()
 export class AppService {
