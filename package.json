@@ -17,7 +17,7 @@
     "url": "git+https://github.com/fagbokforlaget/nestjs-mongoose-paginate.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fagbokforlaget/nestjs-mongoose-paginate/issues"
   },
