@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "install": "npm run build",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
