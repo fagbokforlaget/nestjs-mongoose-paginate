@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import * as schema from './validation.schema.json';
+import { schema } from './validation.schema';
 import { FilterValidationError } from './validation.error';
 const ajv = new Ajv({ strict: false });
 
