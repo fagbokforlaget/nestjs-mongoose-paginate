@@ -25,6 +25,20 @@ describe('Sorter', () => {
         expect(sParam['userName']).toEqual('asc');
       });
 
+      it('should parse + as asc', () => {
+        const sParam = new SorterParser(TestSortProps).parse('+userName');
+
+        expect(sParam).toHaveProperty('userName');
+        expect(sParam['userName']).toEqual('asc');
+      });
+
+      it('should parse - as desc', () => {
+        const sParam = new SorterParser(TestSortProps).parse('-userName');
+
+        expect(sParam).toHaveProperty('userName');
+        expect(sParam['userName']).toEqual('desc');
+      });
+
       it('should process known property with the prop name change', () => {
         const sParam = new SorterParser(TestSortProps).parse('createdAt');
 
