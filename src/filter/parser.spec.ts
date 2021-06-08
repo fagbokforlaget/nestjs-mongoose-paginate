@@ -39,6 +39,15 @@ describe('Filter', () => {
         expect(filterParams.id).toEqual(1);
       });
 
+      it('should process property with null values', async () => {
+        const filterParams = new FilterParser(User).parse({
+          filter: { id: null },
+        });
+
+        expect(filterParams).toHaveProperty('id');
+        expect(filterParams.id).toEqual(null);
+      });
+
       it('should process known property with nested allowed key', async () => {
         const filterParams = new FilterParser(User).parse({
           filter: { name: { $regex: '^image/' } },

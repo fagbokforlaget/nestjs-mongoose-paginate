@@ -7,6 +7,7 @@ describe('Validator', () => {
 
     it('should be valid', async () => {
       const queries = [
+        { mimetype: null },
         { mimetype: 'audio' },
         { mimetype: ['audio', 'video'] },
         { mimetype: { $eq: 'audio' } },
