@@ -14,7 +14,7 @@ export const schema = {
           additionalProperties: false,
           patternProperties: {
             '^[a-zA-Z].*$': {
-              type: ['string', 'number'],
+              type: ['string', 'number', 'null'],
             },
           },
         },
@@ -87,7 +87,7 @@ export const schema = {
           additionalProperties: false,
           patternProperties: {
             '^[$](eq|neq)$': {
-              type: ['string', 'number'],
+              type: ['string', 'number', 'null'],
             },
           },
         },
