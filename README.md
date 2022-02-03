@@ -15,7 +15,7 @@ In case you want to expose some of the properties with a different name, you nee
 import {
   CollectionProperties,
   Expose
-} from '@fagbokforlaget/nestjs-mongoose-paginate';
+} from '@forlagshuset/nestjs-mongoose-paginate';
 
 export class MyCollectionProperties extends CollectionProperties {
   @Expose({ name: 'createdAt', sortable: true })
