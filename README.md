@@ -1,6 +1,6 @@
 # nestjs-mongoose-paginate
 
-A pagination, filtering and sorting lib for nestjs using mongoose orm
+A pagination, filtering and sorting lib for nestjs v8(for v7 please use < v1.1) using mongoose orm
 
 # Usage
 
