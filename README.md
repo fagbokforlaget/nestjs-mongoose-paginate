@@ -35,7 +35,7 @@ import {
   CollectionDto,
   ValidationPipe,
   CollectionResponse
-} from '@fagbokforlaget/nestjs-mongoose-paginate';
+} from '@forlagshuset/nestjs-mongoose-paginate';
 
 @Controller()
 export class AppController {
@@ -58,7 +58,7 @@ import {
   CollectionDto,
   DocumentCollector,
   CollectionResponse
-} from '@fagbokforlaget/nestjs-mongoose-paginate';
+} from '@forlagshuset/nestjs-mongoose-paginate';
 
 @Injectable()
 export class AppService {
