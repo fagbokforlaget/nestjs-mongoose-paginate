@@ -36,7 +36,7 @@ export class DocumentCollector<T> {
   }
 
   private async paginate(query: CollectionDto) {
-    const count: number = await this.model.countDocuments(query.filter).exec();
+    const count: number = await this.count(query.filter);
     const pagination: Pagination = {
       total: count,
       page: query.page,
@@ -47,5 +47,9 @@ export class DocumentCollector<T> {
     };
 
     return pagination;
+  }
+
+  async count(filter: FilterableParameters): Promise<number> {
+    return this.model.countDocuments(filter).exec();
   }
 }
