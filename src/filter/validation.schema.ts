@@ -78,7 +78,7 @@ export const schema = {
           additionalProperties: false,
           properties: {
             $regex: {
-              type: ['string'],
+              type: 'string',
             },
           },
         },
