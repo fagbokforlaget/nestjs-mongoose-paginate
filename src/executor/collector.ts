@@ -10,21 +10,33 @@ type QueryExecutor<T> = {
   skip(offset: number): QueryExecutor<T>;
   limit(limit: number): QueryExecutor<T>;
   sort(data: SortableParameters): QueryExecutor<T>;
+  populate(populate: Populate): QueryExecutor<T>;
 };
 
 type Model = {
   countDocuments(query: FilterableParameters): QueryExecutor<number>;
-  find<T>(query: FilterableParameters): QueryExecutor<T[]>;
+  find<T>(query: FilterableParameters, options?: Options): QueryExecutor<T[]>;
 };
+
+type Options = {
+  populate?: Populate;
+};
+
+type Populate = string | string[];
 
 export class DocumentCollector<T> {
   constructor(private model: Model) {}
 
-  async find(query: CollectionDto): Promise<CollectionResponse<T>> {
+  async find(
+    query: CollectionDto,
+    options?: Options,
+  ): Promise<CollectionResponse<T>> {
+    const { populate } = options;
     const q = this.model
       .find(query.filter)
       .skip(query.page * query.limit)
-      .limit(query.limit);
+      .limit(query.limit)
+      .populate(populate);
 
     if (query.sorter) q.sort(query.sorter);
 
