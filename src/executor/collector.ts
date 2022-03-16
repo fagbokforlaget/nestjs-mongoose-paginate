@@ -29,7 +29,7 @@ export class DocumentCollector<T> {
 
   async find(
     query: CollectionDto,
-    options?: Options,
+    options: Options = {},
   ): Promise<CollectionResponse<T>> {
     const { populate } = options;
     const q = this.model
