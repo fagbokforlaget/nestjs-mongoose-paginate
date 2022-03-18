@@ -1,5 +1,6 @@
 import {
   CollectionDto,
+  CounterDto,
   FilterableParameters,
   SortableParameters,
 } from '../input.dto';
@@ -49,7 +50,7 @@ export class DocumentCollector<T> {
     return pagination;
   }
 
-  async count(filter: FilterableParameters): Promise<number> {
-    return this.model.countDocuments(filter).exec();
+  async count(query: CounterDto): Promise<number> {
+    return this.model.countDocuments(query.filter).exec();
   }
 }
