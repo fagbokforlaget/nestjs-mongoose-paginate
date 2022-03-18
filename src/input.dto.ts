@@ -5,6 +5,15 @@ import { Min } from 'class-validator';
 export type SortableParameters = Record<string, 'desc' | 'asc'>;
 export type FilterableParameters = Record<string, unknown>;
 
+export class CounterDto {
+  @ApiPropertyOptional({
+    type: String,
+    description: 'Filter query string, see documentation for its schema',
+  })
+  @Transform((v: TransformFnParams) => filterQueryToObject(v.value))
+  readonly filter?: FilterableParameters;
+}
+
 export class CollectionDto {
   @ApiPropertyOptional({
     type: String,
