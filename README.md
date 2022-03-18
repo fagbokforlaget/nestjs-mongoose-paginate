@@ -11,7 +11,7 @@ You need to `@Expose` properties of this class. By default none of it is filtera
 You should set this parameters explicitly.
 In case you want to expose some of the properties with a different name, you need to specify a `name` option in this decorator.
 
-```
+```typescript
 import {
   CollectionProperties,
   Expose
@@ -30,7 +30,7 @@ export class MyCollectionProperties extends CollectionProperties {
 
 ### Validation Pipe
 
-```
+```typescript
 import {
   CollectionDto,
   ValidationPipe,
@@ -51,7 +51,7 @@ export class AppController {
 
 ### Document collector usage
 
-```
+```typescript
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import {
