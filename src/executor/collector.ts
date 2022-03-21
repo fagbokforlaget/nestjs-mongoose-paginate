@@ -37,7 +37,7 @@ export class DocumentCollector<T> {
   }
 
   private async paginate(query: CollectionDto) {
-    const count: number = await this.count(query.filter);
+    const count: number = await this.count(query);
     const pagination: Pagination = {
       total: count,
       page: query.page,
