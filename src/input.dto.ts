@@ -39,12 +39,12 @@ export class CollectionDto {
 
   @Type(() => Number)
   @Min(0)
-  @ApiPropertyOptional({ example: '0', description: '' })
+  @ApiPropertyOptional({ example: 0, description: '' })
   readonly page?: number = 0;
 
   @Type(() => Number)
   @Min(0)
-  @ApiPropertyOptional({ example: '10', description: '' })
+  @ApiPropertyOptional({ example: 10, description: '' })
   readonly limit?: number = 10;
 }
 
