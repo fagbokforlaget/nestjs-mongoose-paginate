@@ -6,14 +6,14 @@ import {
 } from '../input.dto';
 import { CollectionResponse, Pagination } from '../output.dto';
 
-type QueryExecutor<T> = {
+export type QueryExecutor<T> = {
   exec(): Promise<T>;
   skip(offset: number): QueryExecutor<T>;
   limit(limit: number): QueryExecutor<T>;
   sort(data: SortableParameters): QueryExecutor<T>;
 };
 
-type Model = {
+export type Model = {
   countDocuments(query: FilterableParameters): QueryExecutor<number>;
   find<T>(query: FilterableParameters): QueryExecutor<T[]>;
 };
