@@ -80,6 +80,9 @@ export const schema = {
             $regex: {
               type: 'string',
             },
+            $options: {
+              type: 'string',
+            },
           },
         },
         {

@@ -12,6 +12,7 @@ describe('Validator', () => {
         { mimetype: ['audio', 'video'] },
         { mimetype: { $eq: 'audio' } },
         { mimetype: { $regex: '^audio/' } },
+        { mimetype: { $regex: '^audio/', $options: 'i' } },
         { mimetype: { $in: ['audio/mp3', 'aduio/mp4'] } },
         { mimetype: { $not: { $in: ['audio/mp3', 'aduio/mp4'] } } },
         { $and: [{ mimetype: 'audio' }, { mimetype: 'video' }] },
