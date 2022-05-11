@@ -9,7 +9,9 @@ describe('Validator', () => {
       const queries = [
         { mimetype: null },
         { mimetype: 'audio' },
-        { mimetype: ['audio', 'video'] },
+        { mimetype: ['audio', 'video', true] },
+        { mimetype: true },
+        { mimetype: { $eq: true } },
         { mimetype: { $eq: 'audio' } },
         { mimetype: { $regex: '^audio/' } },
         { mimetype: { $regex: '^audio/', $options: 'i' } },
