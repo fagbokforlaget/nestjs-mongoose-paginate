@@ -14,7 +14,7 @@ export const schema = {
           additionalProperties: false,
           patternProperties: {
             '^[a-zA-Z].*$': {
-              type: ['string', 'number', 'null'],
+              type: ['string', 'number', 'boolean', 'null'],
             },
           },
         },
@@ -34,7 +34,7 @@ export const schema = {
             '^[a-zA-Z].*$': {
               type: 'array',
               items: {
-                type: ['string', 'number'],
+                type: ['string', 'number', 'boolean'],
               },
             },
           },
@@ -90,7 +90,7 @@ export const schema = {
           additionalProperties: false,
           patternProperties: {
             '^[$](eq|neq)$': {
-              type: ['string', 'number', 'null'],
+              type: ['string', 'number', 'boolean', 'null'],
             },
           },
         },
@@ -110,7 +110,7 @@ export const schema = {
             '^[$](in|nin)$': {
               type: 'array',
               items: {
-                type: ['string', 'number'],
+                type: ['string', 'number', 'boolean'],
               },
             },
           },
