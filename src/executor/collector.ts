@@ -22,12 +22,11 @@ export class DocumentCollector<T> {
   constructor(private model: Model) {}
 
   async find(query: CollectionDto): Promise<CollectionResponse<T>> {
-    const q = this.model
-      .find(query.filter)
-      .skip(query.page * query.limit)
-      .limit(query.limit);
+    const q = this.model.find(query.filter);
 
     if (query.sorter) q.sort(query.sorter);
+
+    q.skip(query.page * query.limit).limit(query.limit);
 
     const data = (await q.exec()) as T[];
     return {
