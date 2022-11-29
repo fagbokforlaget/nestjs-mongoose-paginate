@@ -22,7 +22,6 @@ export class TestController {
     @Query(new ValidationPipe(MyCollectionProperties))
     collectionDto: CollectionDto,
   ): Promise<CollectionResponse<any>> {
-    console.log(collectionDto);
     return { data: [], pagination: { total: 1, limit: 10, page: 0 } };
   }
 }

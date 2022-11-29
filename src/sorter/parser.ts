@@ -9,7 +9,6 @@ export class SorterParser {
   parse(sortProp?: string): SortableParameters {
     const sortableParameters: SortableParameters = {};
     const props = sortProp !== undefined ? sortProp.split(';') : [];
-
     props
       .filter((v) => isNotEmpty(v))
       .forEach((name: string) => {
@@ -28,9 +27,9 @@ export class SorterParser {
 
   private get defaultSort(): string {
     const props = this.collectionPropsClass.prototype.__props;
-    return (
-      Object.keys(props).filter((key) => props[key].default)[0] ?? 'created_at'
-    );
+    const key = Object.keys(props).filter((key) => props[key].default)[0];
+
+    return key ? props[key].name : 'created_at';
   }
 
   private validateProperty(prop: string) {
