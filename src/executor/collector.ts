@@ -29,6 +29,7 @@ export class DocumentCollector<T> {
 
     if (query.sorter) {
       // ensure at least one field is unique for sorting
+      // https://jira.mongodb.org/browse/SERVER-51498
       const sortOptions: SortableParameters =
         '_id' in query.sorter ? query.sorter : { ...query.sorter, _id: 'asc' };
       q.sort(sortOptions);
