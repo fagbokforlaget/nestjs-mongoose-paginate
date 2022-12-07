@@ -27,7 +27,12 @@ export class DocumentCollector<T> {
       .skip(query.page * query.limit)
       .limit(query.limit);
 
-    if (query.sorter) q.sort(query.sorter);
+    if (query.sorter) {
+      // ensure at least one field is unique for sorting
+      const sortOptions: SortableParameters =
+        '_id' in query.sorter ? query.sorter : { ...query.sorter, _id: 'asc' };
+      q.sort(sortOptions);
+    }
 
     const data = (await q.exec()) as T[];
     return {
