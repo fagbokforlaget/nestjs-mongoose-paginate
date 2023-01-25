@@ -5,7 +5,6 @@ import { TestController } from './test.controller';
 
 describe('Cats', () => {
   let app: INestApplication;
-  // let testController: TestController;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
@@ -14,7 +13,6 @@ describe('Cats', () => {
 
     app = moduleRef.createNestApplication();
     app.useGlobalPipes(new ValidationPipe({ transform: true }));
-    // testController = app.get<TestController>(TestController);
 
     await app.init();
   });
