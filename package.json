@@ -41,15 +41,15 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "ajv": "^8.12.0"
+  },
+  "peerDependencies": {
     "@nestjs/common": "^10.2.6",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
-    "@nestjs/swagger": "^7.1.12"
-  },
-  "peerDependencies": {
+    "@nestjs/swagger": "^7.1.12",
     "@nestjs/core": "^10.2.6",
     "@nestjs/platform-express": "^10.2.6",
-    "ajv": "^8.12.0",
     "rxjs": "^7.8.1"
   },
   "jest": {
