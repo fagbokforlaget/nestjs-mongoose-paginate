@@ -19,7 +19,7 @@ export class MyCollectionProperties extends CollectionProperties {
 export class TestController {
   @Get('list')
   async filter(
-    @Query(new ValidationPipe(MyCollectionProperties))
+    @Query(new ValidationPipe(MyCollectionProperties)) // eslint-disable-next-line @typescript-eslint/no-unused-vars
     collectionDto: CollectionDto,
   ): Promise<CollectionResponse<any>> {
     return { data: [], pagination: { total: 1, limit: 10, page: 0 } };
