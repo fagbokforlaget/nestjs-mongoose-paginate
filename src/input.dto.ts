@@ -31,8 +31,10 @@ export class CollectionDto {
 
   @ApiPropertyOptional({
     description:
-      'Use only allowed properties separated by semicolon; default is ascending created_at; prefix name with hyphen/minus sign to get descending order',
+      'Only whitelisted properties separated by semicolon; prefix with -/+ for DESC/ASC order',
     example: '-created_at;filename',
+    default: 'created_at',
+
     required: false,
     type: String,
   })
