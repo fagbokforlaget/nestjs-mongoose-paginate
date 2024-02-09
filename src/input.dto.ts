@@ -1,5 +1,5 @@
-import { Transform, TransformFnParams, Type } from 'class-transformer';
 import { ApiPropertyOptional } from '@nestjs/swagger';
+import { Transform, TransformFnParams, Type } from 'class-transformer';
 import { IsObject, IsOptional, IsString, Min } from 'class-validator';
 
 export type SortableParameters = Record<string, 'desc' | 'asc'>;
@@ -7,8 +7,10 @@ export type FilterableParameters = Record<string, unknown>;
 
 export class CounterDto {
   @ApiPropertyOptional({
+    example: '{"name":"Some Name"}',
+    description: 'Filter query string (JSON), see documentation for its schema',
+    required: false,
     type: String,
-    description: 'Filter query string, see documentation for its schema',
   })
   @Transform((v: TransformFnParams) => filterQueryToObject(v.value))
   @IsObject()
@@ -17,8 +19,10 @@ export class CounterDto {
 
 export class CollectionDto {
   @ApiPropertyOptional({
+    description: 'Filter query string (JSON), see documentation for its schema',
+    example: '{"name":"Some Name"}',
+    required: false,
     type: String,
-    description: 'Filter query string, see documentation for its schema',
   })
   @Transform((v: TransformFnParams) => filterQueryToObject(v.value))
   @IsOptional()
@@ -26,9 +30,10 @@ export class CollectionDto {
   readonly filter?: FilterableParameters;
 
   @ApiPropertyOptional({
-    example: '-created_at;filename',
     description:
       'Use only allowed properties separated by semicolon; default is ascending created_at; prefix name with hyphen/minus sign to get descending order',
+    example: '-created_at;filename',
+    required: false,
     type: String,
   })
   @IsOptional()
@@ -39,12 +44,20 @@ export class CollectionDto {
 
   @Type(() => Number)
   @Min(0)
-  @ApiPropertyOptional({ example: 0, description: '' })
+  @ApiPropertyOptional({
+    description: 'Page number',
+    example: 0,
+    required: false,
+  })
   readonly page?: number = 0;
 
   @Type(() => Number)
   @Min(0)
-  @ApiPropertyOptional({ example: 10, description: '' })
+  @ApiPropertyOptional({
+    description: 'Number of items per page',
+    example: 10,
+    required: false,
+  })
   readonly limit?: number = 10;
 }
 
