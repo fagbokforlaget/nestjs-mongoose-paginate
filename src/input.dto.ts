@@ -13,8 +13,7 @@ export class CounterDto {
     type: String,
   })
   @Transform((v: TransformFnParams) => filterQueryToObject(v.value))
-    @IsOptional()
-
+  @IsOptional()
   @IsObject()
   readonly filter?: FilterableParameters;
 }
