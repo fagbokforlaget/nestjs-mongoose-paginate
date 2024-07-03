@@ -11,6 +11,13 @@ describe('CounterDto', () => {
     const errors = await validate(counterDto);
     expect(errors.length).toBe(0);
   });
+
+  it('should allow payload without any filter', async () => {
+    const payload = {};
+    const counterDto = plainToClass(CounterDto, payload);
+    const errors = await validate(counterDto);
+    expect(errors.length).toBe(0);
+  });
 });
 
 describe('CollectionDto', () => {
