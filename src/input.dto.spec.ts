@@ -16,6 +16,7 @@ describe('CounterDto', () => {
     const payload = {};
     const counterDto = plainToClass(CounterDto, payload);
     const errors = await validate(counterDto);
+    
     expect(errors.length).toBe(0);
   });
 });
