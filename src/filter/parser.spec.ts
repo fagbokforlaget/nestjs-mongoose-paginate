@@ -62,8 +62,8 @@ describe('Filter', () => {
         });
 
         expect(filterParams).toHaveProperty('$or');
-        // @ts-expect-error
-        expect(filterParams.$or.length).toEqual(1);
+        expect(filterParams.$or).toHaveProperty('length');
+        expect((filterParams.$or as []).length).toEqual(1);
       });
 
       it('should throw an error for unknown property', async () => {
