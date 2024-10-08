@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-
 import { CollectionProperties } from '../property';
 import { Expose } from '../property.decorator';
 import { SorterParser } from './parser';
