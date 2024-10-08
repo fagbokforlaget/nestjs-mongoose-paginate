@@ -62,7 +62,7 @@ describe('Filter', () => {
         });
 
         expect(filterParams).toHaveProperty('$or');
-        // @ts-ignore
+        // @ts-expect-error
         expect(filterParams.$or.length).toEqual(1);
       });
 
