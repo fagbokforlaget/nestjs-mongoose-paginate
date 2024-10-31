@@ -1,6 +1,6 @@
 import { isNotEmpty } from 'class-validator';
-import { CollectionProperties } from '../property';
 import { SortableParameters } from '../input.dto';
+import { CollectionProperties } from '../property';
 import { SortValidationError } from './validation.error';
 
 export class SorterParser {
@@ -13,7 +13,8 @@ export class SorterParser {
       .filter((v) => isNotEmpty(v))
       .forEach((name: string) => {
         const desc = name[0] === '-' ? true : false;
-        const prop = desc ? name.slice(1) : name;
+        const asc = name[0] === '+' ? true : false;
+        const prop = desc || asc ? name.slice(1) : name;
 
         sortableParameters[this.validateProperty(prop)] = desc ? 'desc' : 'asc';
       });
