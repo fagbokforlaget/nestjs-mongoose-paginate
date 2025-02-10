@@ -58,7 +58,10 @@ export class FilterParser {
 
   private validateProperty(prop: string, value: any) {
     if (
-      !Object.keys(this.collectionPropsClass.prototype.__props).includes(prop)
+      !Object.keys(this.collectionPropsClass.prototype.__props).includes(
+        prop,
+      ) ||
+      !this.collectionPropsClass.prototype.__props[prop]?.filterable
     )
       throw new FilterValidationError(
         `Property '${prop}' is not exposed for filtering.`,

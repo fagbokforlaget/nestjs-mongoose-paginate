@@ -35,7 +35,10 @@ export class SorterParser {
 
   private validateProperty(prop: string) {
     if (
-      !Object.keys(this.collectionPropsClass.prototype.__props).includes(prop)
+      !Object.keys(this.collectionPropsClass.prototype.__props).includes(
+        prop,
+      ) ||
+      !this.collectionPropsClass.prototype.__props[prop]?.sortable
     )
       throw new SortValidationError(
         `Property '${prop}' is not allowed for sorting.`,
