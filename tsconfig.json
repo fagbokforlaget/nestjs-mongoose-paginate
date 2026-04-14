@@ -11,9 +11,10 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "incremental": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false,
+    "types": ["jest", "node"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"],
-  "strictPropertyInitialization": false
+  "exclude": ["node_modules", "dist"]
 }
