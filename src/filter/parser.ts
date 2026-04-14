@@ -33,9 +33,11 @@ export class FilterParser {
     if (validator) {
       return fltr;
     }
+    
+    return {};
   }
 
-  private transform(v: string | FilterableParameters) {
+  private transform(v: string | FilterableParameters | undefined) {
     if (v instanceof Array) {
       for (const k of v) {
         this.transform(k);
