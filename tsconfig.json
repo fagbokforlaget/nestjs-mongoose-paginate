@@ -13,7 +13,7 @@
     "incremental": true,
     "skipLibCheck": true,
     "strictPropertyInitialization": false,
-    "types": ["jest", "node"]
+    "types": ["vitest/globals", "node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

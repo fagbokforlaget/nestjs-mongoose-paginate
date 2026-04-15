@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { DocumentCollector, Model, QueryExecutor } from './collector';
 
 const data = [
@@ -73,7 +74,7 @@ describe('Executor', () => {
       });
 
       it('should apply skip and limit to aggregate pipeline', async () => {
-        const mockAggregate = jest
+        const mockAggregate = vi
           .fn()
           .mockReturnValue(new MyQueryExecutor(data));
         const model = new MyModel();
@@ -96,7 +97,7 @@ describe('Executor', () => {
 
       it('should calculate pagination correctly for aggregate', async () => {
         const aggregateData = data.slice(0, 3);
-        const mockAggregateResult = jest
+        const mockAggregateResult = vi
           .fn()
           .mockReturnValueOnce(new MyQueryExecutor(aggregateData))
           .mockReturnValueOnce(new MyQueryExecutor([{ total: 13 }]));
@@ -122,7 +123,7 @@ describe('Executor', () => {
 
       it('should return undefined for next when on last page', async () => {
         const aggregateData = data.slice(0, 2);
-        const mockAggregateResult = jest
+        const mockAggregateResult = vi
           .fn()
           .mockReturnValueOnce(new MyQueryExecutor(aggregateData))
           .mockReturnValueOnce(new MyQueryExecutor([{ total: 7 }]));
@@ -142,7 +143,7 @@ describe('Executor', () => {
 
       it('should return undefined for prev when on first page', async () => {
         const aggregateData = data.slice(0, 5);
-        const mockAggregateResult = jest
+        const mockAggregateResult = vi
           .fn()
           .mockReturnValueOnce(new MyQueryExecutor(aggregateData))
           .mockReturnValueOnce(new MyQueryExecutor([{ total: 20 }]));
@@ -162,7 +163,7 @@ describe('Executor', () => {
       });
 
       it('should handle empty aggregate results', async () => {
-        const mockAggregateResult = jest
+        const mockAggregateResult = vi
           .fn()
           .mockReturnValueOnce(new MyQueryExecutor([]))
           .mockReturnValueOnce(new MyQueryExecutor([]));
@@ -188,7 +189,7 @@ describe('Executor', () => {
           { $match: { status: 'active' } },
           { $group: { _id: '$category', total: { $sum: 1 } } },
         ];
-        const mockAggregate = jest
+        const mockAggregate = vi
           .fn()
           .mockReturnValue(new MyQueryExecutor(data));
 
@@ -220,7 +221,7 @@ describe('Executor', () => {
 
     describe('aggregateCount', () => {
       it('should return count from aggregate pipeline', async () => {
-        const mockAggregateResult = jest
+        const mockAggregateResult = vi
           .fn()
           .mockReturnValue(new MyQueryExecutor([{ total: 42 }]));
 
@@ -242,7 +243,7 @@ describe('Executor', () => {
       });
 
       it('should return 0 when aggregate count returns empty array', async () => {
-        const mockAggregateResult = jest
+        const mockAggregateResult = vi
           .fn()
           .mockReturnValue(new MyQueryExecutor([]));
 

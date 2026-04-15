@@ -1,5 +1,5 @@
-import { CollectionProperties } from '../property';
 import { CollectionDto, FilterableParameters } from '../input.dto';
+import { CollectionProperties } from '../property';
 import { FilterValidationError } from './validation.error';
 import { FilterSchemaValidator } from './validator';
 
@@ -33,7 +33,7 @@ export class FilterParser {
     if (validator) {
       return fltr;
     }
-    
+
     return {};
   }
 

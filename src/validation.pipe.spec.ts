@@ -27,7 +27,10 @@ describe('Validation Pipe', () => {
     });
 
     it('should have defined properties', async () => {
-      const validationPipe = new ValidationPipe(User).transform(userDto, null as any);
+      const validationPipe = new ValidationPipe(User).transform(
+        userDto,
+        null as any,
+      );
 
       expect(validationPipe).toHaveProperty('filter');
       expect(validationPipe.filter).toEqual({ name: 'abc', id: 1 });
