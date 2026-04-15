@@ -4,9 +4,11 @@
   "description": "A pagination, filtering and sorting lib for nestjs using mongoose orm",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "swc src -d dist --strip-leading-paths --config-file .swcrc --ignore '**/*.spec.ts' --ignore '**/*.test.ts' --ignore '**/test/**'",
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "build:full": "npm run build && npm run build:types",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "prepare": "npm run build",
+    "prepare": "npm run build:full",
     "prepublishOnly": "npm test && npm run lint",
     "test": "vitest run",
     "test:cov": "vitest run --coverage",
