@@ -30,7 +30,7 @@ export class SorterParser {
     const props = this.collectionPropsClass.prototype.__props;
     const key = Object.keys(props).filter((key) => props[key].default)[0];
 
-    return key ? props[key].name : 'created_at';
+    return key ? (props[key].name ?? key) : 'created_at';
   }
 
   private validateProperty(prop: string) {

@@ -1,16 +1,18 @@
 {
   "name": "@forlagshuset/nestjs-mongoose-paginate",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "A pagination, filtering and sorting lib for nestjs using mongoose orm",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "swc src -d dist --strip-leading-paths --config-file .swcrc --ignore '**/*.spec.ts' --ignore '**/*.test.ts' --ignore '**/test/**'",
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "build:full": "npm run build && npm run build:types",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "prepare": "npm run build",
+    "prepare": "npm run build:full",
     "prepublishOnly": "npm test && npm run lint",
-    "test": "jest",
-    "test:cov": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "test:watch": "vitest"
   },
   "repository": {
     "type": "git",
@@ -23,53 +25,32 @@
   },
   "homepage": "https://github.com/fagbokforlaget/nestjs-mongoose-paginate#readme",
   "devDependencies": {
-    "@nestjs/testing": "^11.1.17",
-    "@types/jest": "^30.0.0",
-    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.57.1",
-    "@typescript-eslint/parser": "^8.57.1",
-    "eslint": "^10.0.3",
+    "@nestjs/testing": "^11.1.19",
+    "@swc/cli": "^0.8.1",
+    "@swc/core": "^1.15.26",
+    "@types/supertest": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.2",
+    "@typescript-eslint/parser": "^8.58.2",
+    "@vitest/coverage-v8": "^4.1.4",
+    "eslint": "^10.2.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
-    "jest": "^30.3.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "reflect-metadata": "^0.2.2",
     "supertest": "^7.2.2",
-    "ts-jest": "^29.4.6",
-    "ts-loader": "^9.5.4",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.4"
   },
   "dependencies": {
-    "@nestjs/common": "^11.1.17",
-    "@nestjs/core": "^11.1.17",
-    "@nestjs/platform-express": "^11.1.17",
-    "@nestjs/swagger": "^11.2.6",
+    "@nestjs/common": "^11.1.19",
+    "@nestjs/core": "^11.1.19",
+    "@nestjs/platform-express": "^11.1.19",
+    "@nestjs/swagger": "^11.2.7",
     "ajv": "^8.18.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
     "rxjs": "^7.8.2"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "setupFiles": [
-      "./jest-setup-file.ts"
-    ],
-    "testRegex": ".spec.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "transformIgnorePatterns": [
-      "^.+\\.js$"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
   }
 }

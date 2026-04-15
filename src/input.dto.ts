@@ -4,6 +4,7 @@ import { IsObject, IsOptional, IsString, Min } from 'class-validator';
 
 export type SortableParameters = Record<string, 'desc' | 'asc'>;
 export type FilterableParameters = Record<string, unknown>;
+export type PipelineStage = Record<string, unknown>;
 
 export class CounterDto {
   @ApiPropertyOptional({
@@ -16,6 +17,30 @@ export class CounterDto {
   @IsOptional()
   @IsObject()
   readonly filter?: FilterableParameters;
+}
+
+export class AggregateDto {
+  @Type(() => Number)
+  @Min(0)
+  @ApiPropertyOptional({
+    description: 'Page number',
+    example: 0,
+    required: false,
+  })
+  readonly page?: number = 0;
+
+  @Type(() => Number)
+  @Min(0)
+  @ApiPropertyOptional({
+    description: 'Number of items per page',
+    example: 10,
+    required: false,
+  })
+  readonly limit?: number = 10;
+}
+
+export interface Aggregate extends AggregateDto {
+  aggregate: FilterableParameters[];
 }
 
 export class CollectionDto {

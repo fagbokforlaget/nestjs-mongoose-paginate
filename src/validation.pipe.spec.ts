@@ -27,7 +27,10 @@ describe('Validation Pipe', () => {
     });
 
     it('should have defined properties', async () => {
-      const validationPipe = new ValidationPipe(User).transform(userDto, null);
+      const validationPipe = new ValidationPipe(User).transform(
+        userDto,
+        null as any,
+      );
 
       expect(validationPipe).toHaveProperty('filter');
       expect(validationPipe.filter).toEqual({ name: 'abc', id: 1 });
@@ -38,7 +41,7 @@ describe('Validation Pipe', () => {
 
   describe('with undefined keys', () => {
     const failFilterUserDto = plainToClass(CollectionDto, {
-      filter: '{"type_name": "type"}',
+      filter: '{\"type_name\": \"type\"}',
     });
     const failSortUserDto = plainToClass(CollectionDto, {
       sort: '-createdAt',
@@ -46,14 +49,14 @@ describe('Validation Pipe', () => {
 
     it('should throw FilterValidationError', async () => {
       const validationPipe = () =>
-        new ValidationPipe(User).transform(failFilterUserDto, null);
+        new ValidationPipe(User).transform(failFilterUserDto, null as any);
 
       expect(validationPipe).toThrow(FilterValidationError);
     });
 
     it('should throw SortValidationError', async () => {
       const validationPipe = () =>
-        new ValidationPipe(User).transform(failSortUserDto, null);
+        new ValidationPipe(User).transform(failSortUserDto, null as any);
 
       expect(validationPipe).toThrow(SortValidationError);
     });
@@ -61,7 +64,7 @@ describe('Validation Pipe', () => {
 
   describe('with unavailable keys', () => {
     const failFilterUserDto = plainToClass(CollectionDto, {
-      filter: '{"typeName": "type"}',
+      filter: '{\"typeName\": \"type\"}',
     });
     const failSortUserDto = plainToClass(CollectionDto, {
       sort: '-id',
@@ -69,14 +72,14 @@ describe('Validation Pipe', () => {
 
     it('should throw FilterValidationError', async () => {
       const validationPipe = () =>
-        new ValidationPipe(User).transform(failFilterUserDto, null);
+        new ValidationPipe(User).transform(failFilterUserDto, null as any);
 
       expect(validationPipe).toThrow(FilterValidationError);
     });
 
     it('should throw SortValidationError', async () => {
       const validationPipe = () =>
-        new ValidationPipe(User).transform(failSortUserDto, null);
+        new ValidationPipe(User).transform(failSortUserDto, null as any);
 
       expect(validationPipe).toThrow(SortValidationError);
     });
