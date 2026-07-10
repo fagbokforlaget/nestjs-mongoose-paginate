@@ -99,7 +99,7 @@ export const schema = {
           additionalProperties: false,
           patternProperties: {
             '^[$](gt|gte|lt|lte)$': {
-              type: 'number',
+              type: ['number', 'string'],
             },
           },
         },

@@ -57,5 +57,48 @@ describe('Validator', () => {
         expect(() => validator.validate(query)).toThrow(FilterValidationError);
       });
     });
+
+    it('should be valid Dates', async () => {
+      const queries = [
+        { createdAt: null },
+        { createdAt: '2025-07-07T15:11:59.250Z' },
+        { createdAt: ['2025-07-07T15:11:59.250Z', 'video', true] },
+        { createdAt: true },
+        { createdAt: { $eq: true } },
+        { createdAt: { $eq: '2025-07-07T15:11:59.250Z' } },
+        { createdAt: { $gt: '2025-07-07T15:11:59.250Z' } },
+        { createdAt: { $regex: '^2025-07-07T15:11:59.250Z/' } },
+        { createdAt: { $regex: '^2025-07-07T15:11:59.250Z/', $options: 'i' } },
+        { createdAt: { $in: ['2025-07-07T15:11:59.250Z', 'aduio/mp4'] } },
+        {
+          createdAt: {
+            $not: { $in: ['2025-07-07T15:11:59.250Z', 'aduio/mp4'] },
+          },
+        },
+        {
+          $and: [
+            { createdAt: '2025-07-07T15:11:59.250Z' },
+            { createdAt: 'video' },
+          ],
+        },
+        {
+          $or: [
+            {
+              $and: [
+                { createdAt: { $eq: '2025-07-07T15:11:59.250Z' } },
+                { length: 3 },
+              ],
+            },
+            {
+              createdAt: { $not: { $regex: '2025-07-07T15:11:59.250Z' } },
+            },
+          ],
+        },
+      ];
+
+      queries.forEach((query) => {
+        expect(validator.validate(query)).toBe(true);
+      });
+    });
   });
 });
